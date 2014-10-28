@@ -5,7 +5,6 @@
       <dd><%= link_to "show", event_path(event) %></dd>
       <dd><%= link_to "edit", edit_event_path(event) %></dd>
       <dd><%= link_to "destroy", event_path(event), method: :delete %></dd></dt>
-
-    <dt></dt>
+    <dt><%= link_to "Attendee", event_attendees_path(event) %></dt>
   </dl><% end %>
 </div>

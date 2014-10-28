@@ -1,0 +1,4 @@
+<%= form_for @attendee, :url => event_attendee_path(@event, @attendee) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>
