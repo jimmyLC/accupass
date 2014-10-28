@@ -1,0 +1,11 @@
+<%= link_to "New", new_event_path %>
+<div>
+  <dl><% @events.each do |event| %>
+    <dt><%= event.name %>
+      <dd><%= link_to "show", event_path(event) %></dd>
+      <dd><%= link_to "edit", edit_event_path(event) %></dd>
+      <dd><%= link_to "destroy", event_path(event), method: :delete %></dd></dt>
+
+    <dt></dt>
+  </dl><% end %>
+</div>
