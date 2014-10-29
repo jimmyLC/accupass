@@ -4,7 +4,11 @@
   <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
 </div>
 <div><p>搜尋關鍵字</p></div>
-<div><p>主題推薦(Category)</p></div>
+<div><p>主題推薦(Category)</p>
+  <% @categories.each do |cate| %>
+  <%= cate.name %>
+  <% end %>
+</div>
 <div class="row">
   <div class="col-md-12"><h3>為你推薦</h3></div>
 
