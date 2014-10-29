@@ -3,6 +3,7 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
   def index
     @events = Event.all
+    @categories = Category.all
   end
 
   def show
@@ -34,7 +35,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    redirect events_path
+    redirect_to events_path
   end
 
   private
@@ -42,6 +43,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
   def save_params
-    params.require(:event).permit(:name, :description, :time)
+    params.require(:event).permit(:name, :description, :time, :category_id)
   end
 end
