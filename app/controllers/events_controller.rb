@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :find_params, :only => [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  load_and_authorize_resource
   def index
     @events = Event.all
     @categories = Category.all
