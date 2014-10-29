@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :find_params, :only => [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   def index
     @events = Event.all
   end
