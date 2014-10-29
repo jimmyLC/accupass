@@ -1,10 +1,19 @@
-<%= link_to "New", new_event_path %>
-<div>
-  <dl><% @events.each do |event| %>
-    <dt><%= event.name %>
-      <dd><%= link_to "show", event_path(event) %></dd>
-      <dd><%= link_to "edit", edit_event_path(event) %></dd>
-      <dd><%= link_to "destroy", event_path(event), method: :delete %></dd></dt>
-    <dt><%= link_to "Attendee", event_attendees_path(event) %></dt>
-  </dl><% end %>
+<div class="jumbotron">
+  <h1>Hello, world!</h1>
+  <p>...</p>
+  <p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
 </div>
+<div><p>搜尋關鍵字</p></div>
+<div><p>主題推薦(Category)</p></div>
+<div class="row">
+  <div class="col-md-12"><h3>為你推薦</h3></div>
+
+  <% @events.each do |event| %>
+    <div class="col-md-4">
+      <h5><%= link_to event.name, event_path(event) %></h5>
+      <%= event.attendees.count%>
+      <%= link_to "參加者", event_attendees_path(event) %>
+    </div>
+    <% end %>
+</div>
+

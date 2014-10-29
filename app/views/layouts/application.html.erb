@@ -7,8 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div><%= link_to "Accupass", events_path, :class =>"navbar-brand" %></div>
+        <ul class="nav navbar-nav">
+          <li><%= link_to "找活動", explore_events_path %></a></li>
+          <li><%= link_to "辦活動", new_event_path %></li>
+        </ul>
+      </div>
+    </nav>
+    <!-- nav -->
+  <div class="container">
+    <%= yield %>
+  </div>
 
-<%= yield %>
+
 
 </body>
 </html>
