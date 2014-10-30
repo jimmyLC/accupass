@@ -1,8 +1,11 @@
 <h1>About Bccupass:</h1>
-
-<h2>Steve Jobs: Good artists copy great artists steal, so this is copy from Accupass</h2>
+<div>
+  <h3>Steve Jobs: Good artists copy great artists steal, so this is copy from Accupass</h3>
+  <%= image_tag("jobs.jpg") %>
+</div>
 <br>
 <h2>WE HAVE</h2>
-<h3><%= "Here are #{@user.count} Users" %></h3>
-<h3><%= "Here are #{@events.count} Events" %></h3>
-<h3><%= "Here are #{@comments.count} Comments" %></h3>
+<h3><%= "#{@user.count} Users" %></h3>
+<h3><%= "#{@events.count} Events" %></h3>
+<h3><%= "#{@comments.count} Comments" %></h3>
+

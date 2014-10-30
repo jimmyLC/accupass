@@ -19,7 +19,7 @@ class AttendeesController < ApplicationController
   def create
     @attendee = @event.attendees.build(save_params)
     if @attendee.save
-      redirect_to event_attendees_path
+      redirect_to events_path
     else
       render :new
     end
