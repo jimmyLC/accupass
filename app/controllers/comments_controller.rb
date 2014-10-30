@@ -1,38 +1,29 @@
 class CommentsController < ApplicationController
+
+  before_action :authenticate_user!
   before_action :find_event
+  before_action :find_params, :only => [:show, :edit, :update, :destroy]
 
   def index
-    @comments = Comment.all
-  end
-
-  def show
-
-  end
-
-  def new
-
+    @comments = @event.comments
   end
 
   def create
-
-  end
-
-  def edit
-
-  end
-
-  def update
-
+    @comment = @event.comments.build(comment_params)
+    if @comment.save
+      redirect_to event_path(@event)
+    end
   end
 
   def destroy
-
+    @comment.destroy
+    redirect_to event_path(@event)
   end
 
   private
 
   def find_event
-    @event = Event.find(:event_id)
+    @event = Event.find(params[:event_id])
   end
 
   def find_params

@@ -12,13 +12,16 @@ class EventsController < ApplicationController
     end
 
     @categories = Category.all
+    @comments = Comment.all
   end
 
   def show
+    @comment = @event.comments
   end
 
   def new
     @event = Event.new
+
   end
 
   def create

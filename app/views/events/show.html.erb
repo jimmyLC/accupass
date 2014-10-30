@@ -14,4 +14,22 @@ Category:
 <h3><span>活動介紹</span></h3>
 <%= @event.description %>
 <%= simple_format(@event.description) %>
-<p><%= link_to 'Back', events_path %></p>
+
+<div>
+  <h3>Attendee:</h3>
+</div>
+
+Comment:
+<% @event.comments.each do |com| %>
+  <%= com.comment %>
+  <%= link_to "Delete", event_comment_path(com.event, com), method: :delete %>
+<% end %>
+
+<%= form_for Comment.new, :url => event_comments_path(@event) do |f| %>
+  <%= f.text_field :comment %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to "New Comment", new_event_comment_path(@event) %>
+
+<p><%= link_to 'Back', events_path, :class => "btn btn-primary" %></p>
