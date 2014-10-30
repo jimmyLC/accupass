@@ -16,6 +16,7 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(save_params)
+    @event.user = current_user
     if @event.save
       redirect_to :action => :index
     else
