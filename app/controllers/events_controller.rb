@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :find_params, :only => [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  load_and_authorize_resource param_method: :save_params
+  load_and_authorize_resource param_method: :event_params
 
   def index
     if params[:cid]
@@ -22,8 +22,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(save_params)
+    @event = Event.new(event_params)
     @event.user = current_user
+
     if @event.save
       redirect_to :action => :index
     else
@@ -35,7 +36,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    if @event.update(save_params)
+    if @event.update(event_params)
       redirect_to event_path(@event)
     else
       render :edit
@@ -48,10 +49,13 @@ class EventsController < ApplicationController
   end
 
   private
+
   def find_params
     @event = Event.find(params[:id])
   end
-  def save_params
+
+  def event_params
     params.require(:event).permit(:name, :description, :time, :category_ids => [])
   end
+
 end
