@@ -16,6 +16,7 @@ class EventsController < ApplicationController
 
   def show
     @comment = @event.comments
+    @attendees = @event.attendees
   end
 
   def new

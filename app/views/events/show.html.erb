@@ -4,31 +4,32 @@
 </ul>
 
 
-Category:
+<h2><%= "Event Name: #{@event.name}"%></h2>
+<h3><span>Event Description:</span></h3>
+<%= @event.description %>
+<%= simple_format(@event.description) %>
+
+<h5>Category:</h5>
 <% @event.categories.each do |c| %>
   <%= c.name %>
 <% end %>
 
-
-<h2><%= @event.name %></h2>
-<h3><span>活動介紹</span></h3>
-<%= @event.description %>
-<%= simple_format(@event.description) %>
-
 <div>
-  <h3>Attendee:</h3>
+  <h3>Attendees:</h3>
+  <% @attendees.each do |att| %>
+  <%= "#{att.name}, " %>
+  <% end %>
 </div>
 
-Comment:
+<h3>Comment:</h3>
 <% @event.comments.each do |com| %>
+<div>
   <%= com.comment %>
   <%= link_to "Delete", event_comment_path(com.event, com), method: :delete %>
+</div>
 <% end %>
 
-<%= form_for Comment.new, :url => event_comments_path(@event) do |f| %>
-  <%= f.text_field :comment %>
-  <%= f.submit %>
+<%= simple_form_for Comment.new, :url => event_comments_path(@event) do |f|%>
+  <%= f.input :comment, placeholder: "type comment here...." %>
+  <%= f.button :submit %>
 <% end %>
-
-
-<p><%= link_to 'Back', events_path, :class => "btn btn-primary" %></p>
