@@ -1,0 +1,7 @@
+<%= simple_form_for @event do |f| %>
+  <%= f.input :name, label: "Event name: " %>
+  <%= f.input :description, label: "Event description: " %>
+  <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) %>
+  <br>
+  <%= f.button :submit, :class => "btn btn-primary" %>
+<% end %>

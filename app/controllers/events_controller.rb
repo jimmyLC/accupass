@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     @event.user = current_user
 
     if @event.save
-      redirect_to :action => :index
+      redirect_to events_path
     else
       render :new
     end
