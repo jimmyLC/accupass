@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :comments
 
     collection do
-      get :explore
+      get :about
     end
   end
 

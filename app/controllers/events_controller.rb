@@ -12,7 +12,6 @@ class EventsController < ApplicationController
     end
 
     @categories = Category.all
-    @comments = Comment.all
   end
 
   def show
@@ -49,6 +48,11 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
     redirect_to events_path
+  end
+
+  def about
+    @user = User.all
+    @comments = Comment.all
   end
 
   private
