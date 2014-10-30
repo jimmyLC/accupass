@@ -45,6 +45,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
   def save_params
-    params.require(:event).permit(:name, :description, :time, :category_id)
+    params.require(:event).permit(:name, :description, :time, :category_ids => [])
   end
 end
