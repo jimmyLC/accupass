@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
+
   devise_for :users
-namespace :account do
-  resources :events
-end
 
-    resources :events do
+  resources :users
 
-      resources :attendees
+  resources :events do
+    resources :attendees
 
-      collection do
-        get :explore
-      end
+    collection do
+      get :explore
     end
+  end
+
+  namespace :account do
+    resources :events
+
+    resources :categories # rails g controller account::categories
+    resources :users # rails g controller account::users
+  end
 
   root :to => "events#index"
   # The priority is based upon order of creation: first created -> highest priority.
