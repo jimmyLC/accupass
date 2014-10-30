@@ -8,4 +8,6 @@ class Event < ActiveRecord::Base
   has_many :event_categoryship
   has_many :categories, :through => :event_categoryship
 
+  has_many :comments
+
 end
