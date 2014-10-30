@@ -1,11 +1,11 @@
-
-<%= current_user.email %>
-
-<% current_user.events.each do |e| %>
-  <%= e.name %>
-<% end %>
-
 <div>
   <p class="text-danger">
     <%= current_user.admin ? "You are Admin, do everything you want!" : nil %></p>
+    <p><%= "Your account :#{current_user.email} " %></p>
 </div>
+
+<p>你發起的活動：</p>
+<ul><% current_user.events.each do |e| %>
+  <li><%= e.name %></li>
+<% end %></ul>
+
