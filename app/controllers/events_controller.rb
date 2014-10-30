@@ -2,8 +2,15 @@ class EventsController < ApplicationController
   before_action :find_params, :only => [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   load_and_authorize_resource param_method: :save_params
+
   def index
-    @events = Event.all
+    if params[:cid]
+      @category = Category.find( params[:cid] )
+      @events = @category.events
+    else
+      @events = Event.all
+    end
+
     @categories = Category.all
   end
 

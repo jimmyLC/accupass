@@ -6,7 +6,7 @@
 <div><p>搜尋關鍵字</p></div>
 <div><p>主題推薦(Category)</p>
   <% @categories.each do |cate| %>
-  <%= cate.name %>
+  <%= link_to cate.name, events_path( :cid => cate.id ) %>
   <% end %>
 </div>
 <div class="row">
