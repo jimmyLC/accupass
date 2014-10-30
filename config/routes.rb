@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :attendees
+    resources :comments
 
     collection do
       get :explore
